@@ -1,4 +1,4 @@
-import { api, APIError } from "encore.dev/api";
+import { api, APIError, Query } from "encore.dev/api";
 import { randomBytes } from "node:crypto";
 import { db } from "./db";
 import log from "encore.dev/log";
@@ -31,7 +31,7 @@ export const shorten = api(
 /** Get URL info by shortened url id */
 export const get = api(
   { method: "GET", path: "/url/:id", expose: true },
-  async ({ id }: { id: string }): Promise<URL> => {
+  async ({ id }: Pick<URL, "id">): Promise<URL> => {
     const row = await db.queryRow`
         SELECT original_url FROM url WHERE id = ${id}
       `;

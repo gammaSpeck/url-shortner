@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "encore run",
     "vitest": "encore test",
-    "test": "vitest"
+    "test": "vitest",
+    "docker:build": "encore eject docker url-shortner"
   },
   "devDependencies": {
     "@types/node": "^20.5.7",
